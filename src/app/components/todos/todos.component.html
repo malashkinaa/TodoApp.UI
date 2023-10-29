@@ -20,11 +20,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let todo of todos">
+            <th>{{ todo.description }}</th>
+            <td>{{ todo.createdDate }}</td>
+            <td>{{ todo.isCompleted }}</td>
           </tr>
         </tbody>
       </table>
