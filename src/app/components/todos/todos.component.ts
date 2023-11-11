@@ -21,6 +21,11 @@ export class TodosComponent implements OnInit{
 
   ngOnInit(): void {
    this.getAllTodos();
+
+      // Set up a timer to pull the method every 2 seconds
+      setInterval(() => {
+        this.getAllTodos();
+      }, 2000);
   }
   
   getAllTodos(){

@@ -17,6 +17,7 @@ export class TodoService {
 
   addTodo(newTodo: Todo) : Observable<Todo> {
     newTodo.id = '00000000-0000-0000-0000-000000000000';
+    newTodo.isCompleted = false;
     return this.http.post<Todo>(this.baseApiUrl + '/api/todo', newTodo);
   }
 
