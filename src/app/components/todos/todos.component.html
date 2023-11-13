@@ -22,7 +22,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody cdkDropList>
           <tr *ngFor="let todo of todos">
             <th [class.stroke]="todo.isCompleted">{{ todo.description }}</th>
             <td>{{ todo.createdDate | date : 'MM/dd/yyyy hh:mm a' }}</td>

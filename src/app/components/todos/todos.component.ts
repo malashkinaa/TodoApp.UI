@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todo.model';
 import { TodoService } from 'src/app/services/todo.service';
+// import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList} from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.css'],
+  // standalone: true,
+  // imports: [CdkDropList, CdkDrag],
 })
+
 export class TodosComponent implements OnInit{
   todos: Todo[] = [];
   newTodo: Todo = {
@@ -63,5 +75,28 @@ export class TodosComponent implements OnInit{
           }
         })
     }
+  //   // Add this method for handling drag-and-drop
+  // onDrop(event: CdkDragDrop<Todo[]>): void {
+  //   // Check if the event is within the same list
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     // Handle the case when items are moved between lists (if needed)
+  //   }
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
+  }
+
+    
+  
 
